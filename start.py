@@ -3,6 +3,7 @@ from selenium import webdriver
 import time
 import sys
 
+from selenium.webdriver.chrome.options import Options
 
 bot = telebot.TeleBot("1201281974:AAE7JoUn_8nqPHSM8rBoJYF9jMuCvo4-kdA")
 @bot.message_handler(commands=['start', 'help'])
@@ -19,7 +20,11 @@ def text(message):
         bot.reply_to(message, "Попробуй еще раз")
     else:
         while(1):
-            driver = webdriver.Chrome()
+            chrome_options = Options()
+            chrome_options.add_argument('--headless')
+            chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument('--disable-dev-shm-usage')
+            driver = webdriver.Chrome("/home/steam_shop_ua/scrapperAuto/chromedriver",chrome_options=chrome_options)
             driver.get("https://www.iaai.com/VehicleSearch/SearchDetails?Keyword=" + data[0] + "+" + data[1]);
             time.sleep(10)
             try:
