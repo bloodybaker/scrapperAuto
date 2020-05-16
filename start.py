@@ -40,7 +40,7 @@ def text(message):
             chrome_options.add_argument('--no-sandbox')
             chrome_options.add_argument('--disable-dev-shm-usage')
             chrome_options.add_argument("--disable-extensions")
-            driver = webdriver.Chrome("chromedriver",chrome_options=chrome_options)
+            driver = webdriver.Chrome("/home/steam_shop_ua/scrapperAuto/chromedriver",chrome_options=chrome_options)
             driver.set_window_size(1920, 1080)
             driver.get("https://www.iaai.com/VehicleSearch/SearchDetails?Keyword=" + data[0] + "+" + data[1]);
             time.sleep(10)
